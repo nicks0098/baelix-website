@@ -21,7 +21,7 @@ import { SiteMotion } from '@/components/SiteMotion';
 
 const DOWNLOAD_URL =
   process.env.NEXT_PUBLIC_BAELIX_DOWNLOAD_URL ??
-  'https://github.com/nicks0098/baelix-website/releases/latest';
+  '/api/download/windows';
 
 const features = [
   {

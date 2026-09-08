@@ -226,3 +226,51 @@ footer > p:last-child { justify-self: end; }
   .install-steps article p { grid-column: 2; }
   .pointer-aura { display: none; }
 }
+
+/* Private feedback inbox */
+.feedback-inbox-shell, .inbox-login-shell { min-height: 100vh; background: #f7f6f7; }
+.inbox-login-shell { display: grid; place-items: center; padding: 90px 24px 40px; background: radial-gradient(circle at 50% 25%, rgba(238,36,78,.1), transparent 30%), #f8f7f8; }
+.inbox-back { position: fixed; top: 28px; left: 32px; display: inline-flex; align-items: center; gap: 8px; color: #6b656b; font-size: .9rem; font-weight: 700; }
+.inbox-login { width: min(440px,100%); display: grid; justify-items: start; padding: 42px; background: #fff; border: 1px solid var(--line); border-radius: 24px; box-shadow: 0 30px 90px rgba(44,18,28,.11); }
+.inbox-login > img { border-radius: 15px; }
+.inbox-kicker { margin: 24px 0 10px; color: var(--red-deep); font: 800 .72rem/1 var(--font-geist-mono), monospace; letter-spacing: .18em; }
+.inbox-login h1, .inbox-title-row h1 { margin: 0; font-size: clamp(2.4rem,5vw,4.6rem); letter-spacing: -.06em; line-height: 1; }
+.inbox-login > p:not(.inbox-kicker) { margin: 18px 0 30px; color: var(--ink-soft); line-height: 1.65; }
+.inbox-login label { width: 100%; display: grid; gap: 8px; color: #3d383d; font-size: .86rem; font-weight: 750; }
+.inbox-key-field, .inbox-search { width: 100%; display: flex; align-items: center; gap: 10px; padding: 0 13px; background: #faf9fa; border: 1px solid #dedadd; border-radius: 11px; }
+.inbox-key-field:focus-within, .inbox-search:focus-within { border-color: var(--red); box-shadow: 0 0 0 3px rgba(238,36,78,.1); }
+.inbox-key-field input, .inbox-search input { width: 100%; min-height: 45px; border: 0; outline: 0; background: transparent; font: inherit; }
+.inbox-login .inbox-remember { display: flex; grid-template-columns: auto 1fr; flex-direction: row; align-items: center; gap: 9px; margin-top: 15px; color: #696269; font-weight: 500; }
+.inbox-login input[type="checkbox"] { accent-color: var(--red); }
+.inbox-login > button { width: 100%; min-height: 47px; margin-top: 20px; color: #fff; background: var(--red); border: 0; border-radius: 11px; font-size: .92rem; font-weight: 800; cursor: pointer; }
+.inbox-error { margin-top: 15px; color: #9e1434; background: #fff0f3; border: 1px solid #ffd2dc; border-radius: 10px; padding: 11px 13px; font-size: .86rem; line-height: 1.45; }
+.inbox-header { min-height: 76px; display: flex; justify-content: space-between; align-items: center; padding: 0 clamp(22px,4vw,64px); background: #fff; border-bottom: 1px solid var(--line); }
+.inbox-header-actions { display: flex; gap: 8px; }
+.inbox-header-actions button, .inbox-filters button, .inbox-error-wide button { display: inline-flex; align-items: center; gap: 7px; min-height: 38px; padding: 0 13px; border: 1px solid var(--line); border-radius: 9px; background: #fff; color: #453e43; font-weight: 700; cursor: pointer; }
+.inbox-header-actions button:disabled { opacity: .55; }
+.inbox-content { width: min(1500px,calc(100% - 48px)); margin: 0 auto; padding: 64px 0 90px; }
+.inbox-title-row { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
+.inbox-title-row .inbox-kicker { margin-top: 0; }
+.inbox-count { display: flex; align-items: center; gap: 8px; padding: 13px 17px; background: #fff; border: 1px solid var(--line); border-radius: 13px; }
+.inbox-count svg { color: var(--red); }.inbox-count strong { font-size: 1.3rem; }.inbox-count span { color: var(--ink-soft); }
+.inbox-controls { display: flex; justify-content: space-between; gap: 24px; margin: 42px 0 18px; }
+.inbox-search { max-width: 470px; background: #fff; }
+.inbox-filters { display: flex; flex-wrap: wrap; gap: 7px; }
+.inbox-filters button { text-transform: capitalize; }
+.inbox-filters button.active { color: #fff; background: #171417; border-color: #171417; }
+.inbox-error-wide { display: flex; justify-content: space-between; align-items: center; margin: 0 0 16px; }
+.inbox-error-wide button { min-height: 30px; color: #9e1434; background: transparent; border-color: #e7aebb; }
+.inbox-table-card { overflow: hidden; min-height: 250px; background: #fff; border: 1px solid var(--line); border-radius: 17px; box-shadow: 0 18px 55px rgba(39,24,30,.055); }
+.feedback-table { min-width: 1060px; border-collapse: collapse; }
+.feedback-table th { height: 48px; padding: 0 16px; color: #716a70; background: #faf9fa; border-bottom: 1px solid var(--line); font-size: .76rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+.feedback-table td { padding: 17px 16px; border-bottom: 1px solid #efedef; vertical-align: top; white-space: normal; font-size: .87rem; }
+.feedback-table tr:last-child td { border-bottom: 0; }
+.feedback-table time, .feedback-table td > strong { display: block; white-space: nowrap; }.feedback-table small { display: block; margin-top: 5px; color: #8a8389; font-size: .72rem; white-space: nowrap; }
+.feedback-message-cell { width: 40%; min-width: 330px; line-height: 1.55; }
+.feedback-kind-badge { display: inline-flex; padding: 6px 9px; border-radius: 999px; font-size: .72rem; font-weight: 800; text-transform: capitalize; }
+.kind-bug { color: #a31132; background: #ffedf1; }.kind-idea { color: #6a4d00; background: #fff5d4; }.kind-compliment { color: #08704a; background: #e7f8f1; }
+.feedback-table a { color: var(--red-deep); text-decoration: underline; text-underline-offset: 3px; }.feedback-table .muted { color: #989197; }
+.feedback-table select { min-width: 112px; min-height: 36px; padding: 0 30px 0 10px; border: 1px solid #dedadd; border-radius: 9px; background: #fff; }
+.inbox-empty { min-height: 250px; display: flex; align-items: center; justify-content: center; gap: 10px; color: #777077; }
+.spinning { animation: inbox-spin 1s linear infinite; } @keyframes inbox-spin { to { transform: rotate(360deg); } }
+@media (max-width: 760px) { .inbox-login { padding: 30px; }.inbox-back { left: 20px; }.inbox-header { align-items: flex-start; gap: 18px; padding-block: 18px; }.inbox-header-actions button { font-size: 0; }.inbox-title-row { align-items: flex-start; }.inbox-controls { flex-direction: column; }.inbox-search { max-width: none; } }

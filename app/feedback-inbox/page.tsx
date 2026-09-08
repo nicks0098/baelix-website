@@ -55,7 +55,7 @@ export default function FeedbackInbox() {
     setLoading(true);
     setError('');
     try {
-      const response = await fetch('/api/feedback/inbox', {
+      const response = await fetch('/api/feedback-inbox', {
         headers: { Authorization: `Bearer ${adminKey}` },
         cache: 'no-store',
       });
@@ -100,7 +100,7 @@ export default function FeedbackInbox() {
     const previous = items;
     setItems((current) => current.map((item) => item.id === id ? { ...item, status } : item));
     try {
-      const response = await fetch('/api/feedback/inbox', {
+      const response = await fetch('/api/feedback-inbox', {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${key}`,
@@ -208,4 +208,3 @@ export default function FeedbackInbox() {
     </main>
   );
 }
-

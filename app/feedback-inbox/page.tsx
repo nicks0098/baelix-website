@@ -6,10 +6,12 @@ import {
   ArrowLeft,
   CheckCircle2,
   Inbox,
+  Gauge,
   KeyRound,
   LogOut,
   RefreshCw,
   Search,
+  UsersRound,
 } from 'lucide-react';
 import {
   Table,
@@ -32,6 +34,9 @@ type FeedbackItem = {
   status: FeedbackStatus;
   createdAt: string;
 };
+type DownloadItem = { id: string; name: string; contactKind: 'email' | 'mobile'; contactValue: string; createdAt: string };
+type PromptItem = { id: string; installationId: string; prompt: string; mode: 'free' | 'connected'; automation: number; appVersion: string; latencyMs: number | null; outcome: string; createdAt: string };
+type InboxView = 'feedback' | 'downloads' | 'intelligence';
 
 const STORAGE_KEY = 'baelix-feedback-inbox-key';
 
@@ -46,6 +51,9 @@ export default function FeedbackInbox() {
   const [draftKey, setDraftKey] = useState('');
   const [remember, setRemember] = useState(true);
   const [items, setItems] = useState<FeedbackItem[]>([]);
+  const [downloads, setDownloads] = useState<DownloadItem[]>([]);
+  const [prompts, setPrompts] = useState<PromptItem[]>([]);
+  const [view, setView] = useState<InboxView>('feedback');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [query, setQuery] = useState('');
@@ -59,9 +67,11 @@ export default function FeedbackInbox() {
         headers: { Authorization: `Bearer ${adminKey}` },
         cache: 'no-store',
       });
-      const body = await response.json() as { feedback?: FeedbackItem[]; message?: string };
+      const body = await response.json() as { feedback?: FeedbackItem[]; downloads?: DownloadItem[]; prompts?: PromptItem[]; message?: string };
       if (!response.ok) throw new Error(body.message || 'The feedback inbox could not be loaded.');
       setItems(body.feedback || []);
+      setDownloads(body.downloads || []);
+      setPrompts(body.prompts || []);
     } catch (loadError) {
       setError(loadError instanceof Error ? loadError.message : String(loadError));
     } finally {
@@ -93,6 +103,8 @@ export default function FeedbackInbox() {
     setKey('');
     setDraftKey('');
     setItems([]);
+    setDownloads([]);
+    setPrompts([]);
     setError('');
   }
 
@@ -128,6 +140,8 @@ export default function FeedbackInbox() {
   }, [filter, items, query]);
 
   const newCount = items.filter((item) => item.status === 'new').length;
+  const visibleDownloads = downloads.filter((item) => !query.trim() || [item.id, item.name, item.contactValue].some((value) => value.toLowerCase().includes(query.trim().toLowerCase())));
+  const visiblePrompts = prompts.filter((item) => !query.trim() || [item.prompt, item.mode, item.outcome, item.appVersion].some((value) => value.toLowerCase().includes(query.trim().toLowerCase())));
 
   if (!key) {
     return (
@@ -162,22 +176,28 @@ export default function FeedbackInbox() {
 
       <section className="inbox-content">
         <div className="inbox-title-row">
-          <div><p className="inbox-kicker">PRIVATE OWNER SPACE</p><h1>Feedback inbox</h1></div>
-          <div className="inbox-count"><Inbox size={19} /><strong>{newCount}</strong><span>new</span></div>
+          <div><p className="inbox-kicker">PRIVATE OWNER SPACE</p><h1>BAELIX intelligence</h1></div>
+          <div className="inbox-count"><Inbox size={19} /><strong>{newCount}</strong><span>new feedback</span></div>
+        </div>
+
+        <div className="inbox-views" role="tablist">
+          <button className={view === 'feedback' ? 'active' : ''} onClick={() => setView('feedback')}><Inbox size={17} /> Feedback <span>{items.length}</span></button>
+          <button className={view === 'downloads' ? 'active' : ''} onClick={() => setView('downloads')}><UsersRound size={17} /> Downloads <span>{downloads.length}</span></button>
+          <button className={view === 'intelligence' ? 'active' : ''} onClick={() => setView('intelligence')}><Gauge size={17} /> Product intelligence <span>{prompts.length}</span></button>
         </div>
 
         <div className="inbox-controls">
-          <label className="inbox-search"><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search feedback, email, or reference…" /></label>
-          <div className="inbox-filters" aria-label="Filter feedback">
+          <label className="inbox-search"><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={`Search ${view === 'feedback' ? 'feedback' : view === 'downloads' ? 'downloads' : 'product intelligence'}…`} /></label>
+          {view === 'feedback' && <div className="inbox-filters" aria-label="Filter feedback">
             {(['all', 'new', 'reviewing', 'resolved', 'archived'] as const).map((status) => (
               <button key={status} className={filter === status ? 'active' : ''} onClick={() => setFilter(status)}>{status}</button>
             ))}
-          </div>
+          </div>}
         </div>
 
         {error && <div className="inbox-error inbox-error-wide">{error}<button onClick={() => setError('')}>Dismiss</button></div>}
 
-        <div className="inbox-table-card">
+        {view === 'feedback' && <div className="inbox-table-card">
           {loading && items.length === 0 ? (
             <div className="inbox-empty"><RefreshCw className="spinning" /> Loading feedback…</div>
           ) : visibleItems.length === 0 ? (
@@ -203,7 +223,21 @@ export default function FeedbackInbox() {
               </TableBody>
             </Table>
           )}
-        </div>
+        </div>}
+        {view === 'downloads' && <div className="inbox-table-card">
+          {visibleDownloads.length === 0 ? <div className="inbox-empty"><CheckCircle2 /> No download registrations match this view.</div> : (
+            <Table className="feedback-table"><TableHeader><TableRow><TableHead>Registered</TableHead><TableHead>Name</TableHead><TableHead>Contact method</TableHead><TableHead>Contact</TableHead></TableRow></TableHeader><TableBody>
+              {visibleDownloads.map((item) => <TableRow key={item.id}><TableCell><time>{readableDate(item.createdAt)}</time><small>{item.id}</small></TableCell><TableCell><strong>{item.name}</strong></TableCell><TableCell><span className="feedback-kind-badge">{item.contactKind}</span></TableCell><TableCell>{item.contactKind === 'email' ? <a href={`mailto:${item.contactValue}`}>{item.contactValue}</a> : <a href={`tel:${item.contactValue}`}>{item.contactValue}</a>}</TableCell></TableRow>)}
+            </TableBody></Table>
+          )}
+        </div>}
+        {view === 'intelligence' && <div className="inbox-table-card">
+          {visiblePrompts.length === 0 ? <div className="inbox-empty"><CheckCircle2 /> No Product Intelligence records match this view.</div> : (
+            <Table className="feedback-table"><TableHeader><TableRow><TableHead>Received</TableHead><TableHead>Request</TableHead><TableHead>Mode</TableHead><TableHead>Speed</TableHead><TableHead>Outcome</TableHead></TableRow></TableHeader><TableBody>
+              {visiblePrompts.map((item) => <TableRow key={item.id}><TableCell><time>{readableDate(item.createdAt)}</time><small>{item.installationId.slice(0, 8)} · v{item.appVersion}</small></TableCell><TableCell className="feedback-message-cell">{item.prompt}</TableCell><TableCell><strong>{item.mode}</strong><small>{item.automation ? 'Automation' : 'Chat'}</small></TableCell><TableCell>{item.latencyMs === null ? '—' : `${(item.latencyMs / 1000).toFixed(1)}s`}</TableCell><TableCell><span className={`telemetry-outcome outcome-${item.outcome}`}>{item.outcome}</span></TableCell></TableRow>)}
+            </TableBody></Table>
+          )}
+        </div>}
       </section>
     </main>
   );

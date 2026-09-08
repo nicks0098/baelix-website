@@ -18,10 +18,7 @@ import {
   Workflow,
 } from 'lucide-react';
 import { SiteMotion } from '@/components/SiteMotion';
-
-const DOWNLOAD_URL =
-  process.env.NEXT_PUBLIC_BAELIX_DOWNLOAD_URL ??
-  '/api/download/windows';
+import { DownloadGate } from '@/components/DownloadGate';
 
 const features = [
   {
@@ -65,9 +62,7 @@ export default function Home() {
           <a href="#setup">Setup</a>
           <a href="#creators">Creators</a>
         </nav>
-        <a className="header-download" href="#download">
-          Download <ArrowDown size={16} />
-        </a>
+        <DownloadGate className="header-download">Download <ArrowDown size={16} /></DownloadGate>
       </header>
 
       <section className="hero" id="top">
@@ -80,9 +75,9 @@ export default function Home() {
             to something real on your computer.
           </p>
           <div className="hero-actions">
-            <a className="primary-button" href="#download">
+            <DownloadGate>
               <Download size={18} /> Download for Windows
-            </a>
+            </DownloadGate>
             <a className="text-link" href="#experience">
               See BAELIX in action <ArrowRight size={17} />
             </a>
@@ -249,10 +244,10 @@ export default function Home() {
             <div className="section-tag">Install BAELIX</div>
             <h2>Your next idea starts here.</h2>
             <p>BAELIX is currently built for 64-bit Windows.</p>
-            <a className="primary-button download-large" href={DOWNLOAD_URL} target="_blank" rel="noreferrer">
+            <DownloadGate className="primary-button download-large">
               <MonitorDown size={20} /> Download BAELIX
-            </a>
-            <small>Version 0.1.0 · Windows x64</small>
+            </DownloadGate>
+            <small>Latest release · Windows x64</small>
           </div>
           <div className="install-steps">
             <article><div><Download size={20} /></div><span>01</span><h3>Download</h3><p>Get the latest BAELIX Windows installer from the official release page.</p></article>
@@ -280,7 +275,7 @@ export default function Home() {
       <footer>
         <a className="brand" href="#top"><Image src="/baelix-signature.svg" alt="" width={38} height={38} /><span>BAELIX</span></a>
         <p>Automation is the future.</p>
-        <p>© {new Date().getFullYear()} BAELIX · Nikhil Dhandhi &amp; Rupesh Chauhan</p>
+        <p>© {new Date().getFullYear()} BAELIX · <a href="/privacy-policy">Privacy &amp; Data Policy</a></p>
       </footer>
     </main>
   );

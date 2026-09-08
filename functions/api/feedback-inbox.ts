@@ -48,16 +48,33 @@ export const onRequestGet: PagesFunction<InboxEnvironment> = async ({ request, e
   const denied = await requireInbox(request, env);
   if (denied) return denied;
 
-  const result = await env.FEEDBACK_DB!.prepare(
+  const [result, downloads, prompts] = await Promise.all([
+    env.FEEDBACK_DB!.prepare(
     `SELECT id, kind, message, contact_email AS contactEmail,
             app_version AS appVersion, platform, architecture, status,
             created_at AS createdAt
      FROM feedback
      ORDER BY created_at DESC
      LIMIT 250`,
-  ).all();
+    ).all(),
+    env.FEEDBACK_DB!.prepare(
+      `SELECT id, name, contact_kind AS contactKind, contact_value AS contactValue,
+              created_at AS createdAt
+       FROM download_signups ORDER BY created_at DESC LIMIT 500`,
+    ).all(),
+    env.FEEDBACK_DB!.prepare(
+      `SELECT id, installation_id AS installationId, prompt, mode, automation,
+              app_version AS appVersion, latency_ms AS latencyMs, outcome,
+              created_at AS createdAt
+       FROM prompt_telemetry ORDER BY created_at DESC LIMIT 500`,
+    ).all(),
+  ]);
 
-  return json({ feedback: result.results || [] });
+  return json({
+    feedback: result.results || [],
+    downloads: downloads.results || [],
+    prompts: prompts.results || [],
+  });
 };
 
 export const onRequestPatch: PagesFunction<InboxEnvironment> = async ({ request, env }) => {
@@ -84,4 +101,3 @@ export const onRequestPatch: PagesFunction<InboxEnvironment> = async ({ request,
 
   return json({ id, status });
 };
-

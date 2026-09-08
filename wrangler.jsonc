@@ -2,5 +2,12 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "baelix",
   "compatibility_date": "2026-09-07",
-  "pages_build_output_dir": "./dist/client"
+  "pages_build_output_dir": "./dist/client",
+  "d1_databases": [
+    {
+      "binding": "FEEDBACK_DB",
+      "database_name": "baelix-feedback",
+      "database_id": "abe3c844-12ae-44d7-bec6-1cd19ab9906e"
+    }
+  ]
 }

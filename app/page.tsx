@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   ArrowDown,
   ArrowRight,
@@ -19,6 +20,8 @@ import {
 } from 'lucide-react';
 import { SiteMotion } from '@/components/SiteMotion';
 import { DownloadGate } from '@/components/DownloadGate';
+import { ExperienceDemo } from '@/components/ExperienceDemo';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const features = [
   {
@@ -49,7 +52,7 @@ const features = [
 
 export default function Home() {
   return (
-    <main>
+    <main className="marketing-site">
       <SiteMotion />
       <header className="site-header">
         <a className="brand" href="#top" aria-label="BAELIX home">
@@ -62,10 +65,18 @@ export default function Home() {
           <a href="#setup">Use BAELIX</a>
           <a href="#creators">Creators</a>
         </nav>
-        <DownloadGate className="header-download">Download <ArrowDown size={16} /></DownloadGate>
+        <div className="header-actions">
+          <ThemeToggle />
+          <DownloadGate className="header-download magnetic-cta">Download <ArrowDown size={16} /></DownloadGate>
+        </div>
       </header>
 
       <section className="hero" id="top">
+        <div className="hero-atmosphere" aria-hidden="true">
+          <i className="particle particle-one" /><i className="particle particle-two" />
+          <i className="particle particle-three" /><i className="particle particle-four" />
+          <span className="neural-line neural-one" /><span className="neural-line neural-two" />
+        </div>
         <div className="signal-line" aria-hidden="true" />
         <div className="hero-copy">
           <p className="eyebrow"><Sparkles size={15} /> BAELIX AI · Intelligence, connected</p>
@@ -75,7 +86,7 @@ export default function Home() {
             to something real on your computer.
           </p>
           <div className="hero-actions">
-            <DownloadGate>
+            <DownloadGate className="primary-button magnetic-cta">
               <Download size={18} /> Download for Windows
             </DownloadGate>
             <a className="text-link" href="#experience">
@@ -90,18 +101,25 @@ export default function Home() {
             <span className="orbit orbit-two" />
             <span className="orbit-core" />
           </div>
-          <div className="product-frame">
-            <div className="frame-bar">
-              <span /><span /><span />
-              <p>BAELIX / FREE INTELLIGENCE</p>
+          <div className="product-float">
+            <div className="product-frame" data-tilt>
+              <div className="frame-bar">
+                <span /><span /><span />
+                <p>BAELIX / FREE INTELLIGENCE</p>
+              </div>
+              <Image
+                src="/screenshots/baelix-create.png"
+                alt="BAELIX Free working on a creative request"
+                width={1917}
+                height={1078}
+                priority
+              />
+              <div className="product-status" aria-hidden="true">
+                <span className="live-dot" />
+                <div><strong>BAELIX is working</strong><small>Building in real time</small></div>
+                <i /><i /><i />
+              </div>
             </div>
-            <Image
-              src="/screenshots/baelix-create.png"
-              alt="BAELIX Free working on a creative request"
-              width={1917}
-              height={1078}
-              priority
-            />
           </div>
         </div>
 
@@ -159,39 +177,7 @@ export default function Home() {
             <p>Every stage lives in one timeline—from your first request to the commands, files, and final instructions.</p>
           </div>
 
-          <article className="showcase showcase-wide">
-            <div className="showcase-copy">
-              <span>01 / Create</span>
-              <h3>Ask naturally.</h3>
-              <p>Describe the app, website, document, image, or improvement you want. BAELIX understands the intended outcome before it chooses how to help.</p>
-            </div>
-            <div className="screenshot-window screenshot-create">
-              <Image src="/screenshots/baelix-create.png" alt="A creation request in BAELIX Free" width={1917} height={1078} />
-            </div>
-          </article>
-
-          <div className="showcase-pair">
-            <article className="showcase">
-              <div className="showcase-copy">
-                <span>02 / Follow</span>
-                <h3>Watch the live activity.</h3>
-                <p>See what BAELIX is doing, which tool it is using, and what changed as the work moves forward.</p>
-              </div>
-              <div className="screenshot-window screenshot-activity">
-                <Image src="/screenshots/baelix-activity.png" alt="BAELIX automation activity panels" width={1586} height={1078} />
-              </div>
-            </article>
-            <article className="showcase">
-              <div className="showcase-copy">
-                <span>03 / Use</span>
-                <h3>Take the finished result.</h3>
-                <p>BAELIX keeps completed work in the chosen project and explains how to open or run what it made.</p>
-              </div>
-              <div className="screenshot-window screenshot-complete">
-                <Image src="/screenshots/baelix-complete.png" alt="A completed BAELIX Builder task" width={1487} height={790} />
-              </div>
-            </article>
-          </div>
+          <ExperienceDemo />
         </div>
       </section>
 
@@ -257,7 +243,7 @@ export default function Home() {
             <div className="section-tag">Install BAELIX</div>
             <h2>Your next idea starts here.</h2>
             <p>BAELIX is currently built for 64-bit Windows.</p>
-            <DownloadGate className="primary-button download-large">
+            <DownloadGate className="primary-button download-large magnetic-cta">
               <MonitorDown size={20} /> Download BAELIX
             </DownloadGate>
             <small>Latest release · Windows x64</small>
@@ -286,9 +272,10 @@ export default function Home() {
       </section>
 
       <footer>
+        <div className="footer-field" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
         <a className="brand" href="#top"><Image src="/baelix-signature.svg" alt="" width={38} height={38} /><span>BAELIX</span></a>
         <p>Automation is the future.</p>
-        <p>© {new Date().getFullYear()} BAELIX · <a href="/privacy-policy">Privacy &amp; Data Policy</a></p>
+        <p>© {new Date().getFullYear()} BAELIX · <Link href="/privacy-policy">Privacy &amp; Data Policy</Link></p>
       </footer>
     </main>
   );

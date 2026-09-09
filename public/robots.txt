@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /feedback-inbox
+Disallow: /api/feedback-inbox
+
+Sitemap: https://baelix.pages.dev/sitemap.xml

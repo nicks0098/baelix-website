@@ -1,0 +1,12 @@
+{
+  "name": "BAELIX AI",
+  "short_name": "BAELIX",
+  "description": "Free AI automation for Windows.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ee244e",
+  "icons": [
+    { "src": "/baelix-logo.png", "sizes": "464x446", "type": "image/png", "purpose": "any" }
+  ]
+}

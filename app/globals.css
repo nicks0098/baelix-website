@@ -137,7 +137,7 @@ main > *:not(.pointer-aura):not(.scroll-progress) { position: relative; z-index:
 
 /* Setup guides */
 .setup-heading { margin-bottom: 64px; }
-.guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.guide-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
 .guide-card { padding: clamp(30px,4vw,58px); border: 1px solid var(--line); border-radius: 24px; background: rgba(255,255,255,.86); box-shadow: 0 24px 70px rgba(35,18,25,.055); transition: transform .35s ease, border-color .35s ease; }
 .guide-card:hover { transform: translateY(-7px); border-color: rgba(238,36,78,.35); }
 .guide-icon { width: 52px; height: 52px; display: grid; place-items: center; margin-bottom: 38px; color: var(--red); background: var(--red-pale); border-radius: 15px; }
@@ -154,6 +154,7 @@ main > *:not(.pointer-aura):not(.scroll-progress) { position: relative; z-index:
 .guide-card-red .guide-label, .guide-card-red > a, .guide-card-red li strong { color: #fff; }
 .guide-card-red li p { color: rgba(255,255,255,.78); }
 .guide-card-red li > span { color: #fff; background: rgba(255,255,255,.14); }
+.guide-card-automation { background: linear-gradient(150deg,#fff,#fff5f7); }
 .privacy-note { display: grid; grid-template-columns: auto 1fr; gap: 18px; margin-top: 24px; padding: 24px 28px; color: #453e43; background: #f7f6f7; border: 1px solid var(--line); border-radius: 18px; }
 .privacy-note svg { color: var(--red); margin-top: 2px; }
 .privacy-note p { margin: 5px 0 0; color: var(--ink-soft); line-height: 1.55; }
@@ -232,6 +233,7 @@ footer > p:last-child { justify-self: end; }
   .showcase-wide .screenshot-window { min-height: 480px; }
   .showcase-copy h3 { margin-top: 52px; }
   .install-section .section-shell { grid-template-columns: 1fr; }
+  .guide-grid { grid-template-columns: 1fr 1fr; }
   .install-intro { position: relative; top: auto; }
 }
 

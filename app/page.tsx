@@ -59,7 +59,7 @@ export default function Home() {
         <nav aria-label="Main navigation">
           <a href="#about">About</a>
           <a href="#experience">Experience</a>
-          <a href="#setup">Setup</a>
+          <a href="#setup">Use BAELIX</a>
           <a href="#creators">Creators</a>
         </nav>
         <DownloadGate className="header-download">Download <ArrowDown size={16} /></DownloadGate>
@@ -68,7 +68,7 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="signal-line" aria-hidden="true" />
         <div className="hero-copy">
-          <p className="eyebrow"><Sparkles size={15} /> Intelligence, connected</p>
+          <p className="eyebrow"><Sparkles size={15} /> BAELIX AI · Intelligence, connected</p>
           <h1>BAELIX<br /><span>is here.</span></h1>
           <p className="hero-lede">
             One focused space to think, create, and let AI carry work from an idea
@@ -198,13 +198,26 @@ export default function Home() {
       <section className="setup-section section-shell" id="setup">
         <div className="section-heading setup-heading">
           <div>
-            <div className="section-tag">Get connected</div>
-            <h2>Ready in a few minutes.</h2>
+            <div className="section-tag">Using BAELIX AI</div>
+            <h2>From installed to creating.</h2>
           </div>
-          <p>BAELIX guides you to the provider’s official authorization page. Passwords are never entered inside BAELIX.</p>
+          <p>Turn on visible automation, connect free conversational intelligence, and optionally add image generation—all from BAELIX Settings.</p>
         </div>
 
         <div className="guide-grid">
+          <article className="guide-card guide-card-automation">
+            <div className="guide-icon"><Workflow size={24} /></div>
+            <p className="guide-label">Visible automation</p>
+            <h3>Turn on Automation</h3>
+            <ol>
+              <li><span>1</span><p>Open BAELIX and remain in the <strong>Free</strong> workspace.</p></li>
+              <li><span>2</span><p>Select the <strong>Settings</strong> icon in the top-right corner.</p></li>
+              <li><span>3</span><p>Switch <strong>Automation</strong> on and choose the default project location.</p></li>
+              <li><span>4</span><p>Describe what to make. Review any permission request before BAELIX changes files or runs a command.</p></li>
+            </ol>
+            <a href="#experience">See live activity <ArrowRight size={14} /></a>
+          </article>
+
           <article className="guide-card">
             <div className="guide-icon"><KeyRound size={24} /></div>
             <p className="guide-label">Free intelligence</p>

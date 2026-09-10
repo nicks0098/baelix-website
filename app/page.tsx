@@ -56,7 +56,13 @@ export default function Home() {
       <SiteMotion />
       <header className="site-header">
         <a className="brand" href="#top" aria-label="BAELIX home">
-          <Image src="/baelix-signature.svg" alt="" width={42} height={42} priority />
+          <Image
+            src="/baelix-signature.svg"
+            alt=""
+            width={42}
+            height={42}
+            priority
+          />
           <span>BAELIX</span>
         </a>
         <nav aria-label="Main navigation">
@@ -67,23 +73,34 @@ export default function Home() {
         </nav>
         <div className="header-actions">
           <ThemeToggle />
-          <DownloadGate className="header-download magnetic-cta">Download <ArrowDown size={16} /></DownloadGate>
+          <DownloadGate className="header-download magnetic-cta">
+            Download <ArrowDown size={16} />
+          </DownloadGate>
         </div>
       </header>
 
       <section className="hero" id="top">
         <div className="hero-atmosphere" aria-hidden="true">
-          <i className="particle particle-one" /><i className="particle particle-two" />
-          <i className="particle particle-three" /><i className="particle particle-four" />
-          <span className="neural-line neural-one" /><span className="neural-line neural-two" />
+          <i className="particle particle-one" />
+          <i className="particle particle-two" />
+          <i className="particle particle-three" />
+          <i className="particle particle-four" />
+          <span className="neural-line neural-one" />
+          <span className="neural-line neural-two" />
         </div>
         <div className="signal-line" aria-hidden="true" />
         <div className="hero-copy">
-          <p className="eyebrow"><Sparkles size={15} /> BAELIX AI · Intelligence, connected</p>
-          <h1>BAELIX<br /><span>is here.</span></h1>
+          <p className="eyebrow">
+            <Sparkles size={15} /> BAELIX AI · Intelligence, connected
+          </p>
+          <h1>
+            BAELIX
+            <br />
+            <span>is here.</span>
+          </h1>
           <p className="hero-lede">
-            One focused space to think, create, and let AI carry work from an idea
-            to something real on your computer.
+            One focused space to think, create, and let AI carry work from an
+            idea to something real on your computer.
           </p>
           <div className="hero-actions">
             <DownloadGate className="primary-button magnetic-cta">
@@ -104,7 +121,9 @@ export default function Home() {
           <div className="product-float">
             <div className="product-frame" data-tilt>
               <div className="frame-bar">
-                <span /><span /><span />
+                <span />
+                <span />
+                <span />
                 <p>BAELIX / FREE INTELLIGENCE</p>
               </div>
               <Image
@@ -116,8 +135,13 @@ export default function Home() {
               />
               <div className="product-status" aria-hidden="true">
                 <span className="live-dot" />
-                <div><strong>BAELIX is working</strong><small>Building in real time</small></div>
-                <i /><i /><i />
+                <div>
+                  <strong>BAELIX is working</strong>
+                  <small>Building in real time</small>
+                </div>
+                <i />
+                <i />
+                <i />
               </div>
             </div>
           </div>
@@ -131,12 +155,18 @@ export default function Home() {
 
       <div className="motion-ribbon" aria-hidden="true">
         <div>
-          <span>BAELIX IS HERE</span><i />
-          <span>AUTOMATION IS THE FUTURE</span><i />
-          <span>INTELLIGENCE SHOULD BE ACCESSIBLE</span><i />
-          <span>BAELIX IS HERE</span><i />
-          <span>AUTOMATION IS THE FUTURE</span><i />
-          <span>INTELLIGENCE SHOULD BE ACCESSIBLE</span><i />
+          <span>BAELIX IS HERE</span>
+          <i />
+          <span>AUTOMATION IS THE FUTURE</span>
+          <i />
+          <span>INTELLIGENCE SHOULD BE ACCESSIBLE</span>
+          <i />
+          <span>BAELIX IS HERE</span>
+          <i />
+          <span>AUTOMATION IS THE FUTURE</span>
+          <i />
+          <span>INTELLIGENCE SHOULD BE ACCESSIBLE</span>
+          <i />
         </div>
       </div>
 
@@ -146,20 +176,24 @@ export default function Home() {
           <h2>AI should not stop at an answer.</h2>
           <div>
             <p className="large-copy">
-              BAELIX is a Windows AI workspace designed to turn conversation into
-              action—without hiding the work behind it.
+              BAELIX is a Windows AI workspace designed to turn conversation
+              into action—without hiding the work behind it.
             </p>
             <p>
               Ask a question when you need a thought partner. Turn on Automation
-              when you want BAELIX to create or improve something on your computer.
-              The same chat carries the idea, the activity, and the finished result.
+              when you want BAELIX to create or improve something on your
+              computer. The same chat carries the idea, the activity, and the
+              finished result.
             </p>
           </div>
         </div>
         <div className="feature-grid">
           {features.map(({ number, icon: Icon, title, copy }) => (
             <article className="feature-card" key={number}>
-              <div className="feature-top"><span>{number}</span><Icon size={21} /></div>
+              <div className="feature-top">
+                <span>{number}</span>
+                <Icon size={21} />
+              </div>
               <h3>{title}</h3>
               <p>{copy}</p>
             </article>
@@ -174,7 +208,10 @@ export default function Home() {
               <div className="section-tag">The experience</div>
               <h2>See the idea become real.</h2>
             </div>
-            <p>Every stage lives in one timeline—from your first request to the commands, files, and final instructions.</p>
+            <p>
+              Every stage lives in one timeline—from your first request to the
+              commands, files, and final instructions.
+            </p>
           </div>
 
           <ExperienceDemo />
@@ -187,53 +224,146 @@ export default function Home() {
             <div className="section-tag">Using BAELIX AI</div>
             <h2>From installed to creating.</h2>
           </div>
-          <p>Turn on visible automation, connect free conversational intelligence, and optionally add image generation—all from BAELIX Settings.</p>
+          <p>
+            Turn on visible automation, connect free conversational
+            intelligence, and optionally add image generation—all from BAELIX
+            Settings.
+          </p>
         </div>
 
         <div className="guide-grid">
           <article className="guide-card guide-card-automation">
-            <div className="guide-icon"><Workflow size={24} /></div>
+            <div className="guide-icon">
+              <Workflow size={24} />
+            </div>
             <p className="guide-label">Visible automation</p>
             <h3>Turn on Automation</h3>
             <ol>
-              <li><span>1</span><p>Open BAELIX and remain in the <strong>Free</strong> workspace.</p></li>
-              <li><span>2</span><p>Select the <strong>Settings</strong> icon in the top-right corner.</p></li>
-              <li><span>3</span><p>Switch <strong>Automation</strong> on and choose the default project location.</p></li>
-              <li><span>4</span><p>Describe what to make. Review any permission request before BAELIX changes files or runs a command.</p></li>
+              <li>
+                <span>1</span>
+                <p>
+                  Open BAELIX and remain in the <strong>Free</strong> workspace.
+                </p>
+              </li>
+              <li>
+                <span>2</span>
+                <p>
+                  Select the <strong>Settings</strong> icon in the top-right
+                  corner.
+                </p>
+              </li>
+              <li>
+                <span>3</span>
+                <p>
+                  Switch <strong>Automation</strong> on and choose the default
+                  project location.
+                </p>
+              </li>
+              <li>
+                <span>4</span>
+                <p>
+                  Describe what to make. Review any permission request before
+                  BAELIX changes files or runs a command.
+                </p>
+              </li>
             </ol>
-            <a href="#experience">See live activity <ArrowRight size={14} /></a>
+            <a href="#experience">
+              See live activity <ArrowRight size={14} />
+            </a>
           </article>
 
           <article className="guide-card">
-            <div className="guide-icon"><KeyRound size={24} /></div>
+            <div className="guide-icon">
+              <KeyRound size={24} />
+            </div>
             <p className="guide-label">Free intelligence</p>
             <h3>Connect OpenRouter</h3>
             <ol>
-              <li><span>1</span><p>Open BAELIX and select <strong>Free</strong> at the top.</p></li>
-              <li><span>2</span><p>Open <strong>Settings</strong>, then find “Open free-model pool.”</p></li>
-              <li><span>3</span><p>Select <strong>Connect OpenRouter</strong> and approve access in your browser.</p></li>
-              <li><span>4</span><p>Return to BAELIX. Eligible free models are discovered automatically.</p></li>
+              <li>
+                <span>1</span>
+                <p>
+                  Open BAELIX and select <strong>Free</strong> at the top.
+                </p>
+              </li>
+              <li>
+                <span>2</span>
+                <p>
+                  Open <strong>Settings</strong>, then find “Open free-model
+                  pool.”
+                </p>
+              </li>
+              <li>
+                <span>3</span>
+                <p>
+                  Select <strong>Connect OpenRouter</strong> and approve access
+                  in your browser.
+                </p>
+              </li>
+              <li>
+                <span>4</span>
+                <p>
+                  Return to BAELIX. Eligible free models are discovered
+                  automatically.
+                </p>
+              </li>
             </ol>
-            <a href="https://openrouter.ai/" target="_blank" rel="noreferrer">Visit OpenRouter <ExternalLink size={14} /></a>
+            <a href="https://openrouter.ai/" target="_blank" rel="noreferrer">
+              Visit OpenRouter <ExternalLink size={14} />
+            </a>
           </article>
 
           <article className="guide-card guide-card-red">
-            <div className="guide-icon"><Cloud size={24} /></div>
+            <div className="guide-icon">
+              <Cloud size={24} />
+            </div>
             <p className="guide-label">Free image intelligence</p>
             <h3>Connect Cloudflare</h3>
             <ol>
-              <li><span>1</span><p>Create a free Cloudflare account and open <strong>Workers AI</strong>.</p></li>
-              <li><span>2</span><p>Copy your <strong>Account ID</strong> and create a Workers AI API token.</p></li>
-              <li><span>3</span><p>In BAELIX Free settings, open “Free image generation.”</p></li>
-              <li><span>4</span><p>Paste both values and select <strong>Connect free image intelligence</strong>.</p></li>
+              <li>
+                <span>1</span>
+                <p>
+                  Create a free Cloudflare account and open{' '}
+                  <strong>Workers AI</strong>.
+                </p>
+              </li>
+              <li>
+                <span>2</span>
+                <p>
+                  Copy your <strong>Account ID</strong> and create a Workers AI
+                  API token.
+                </p>
+              </li>
+              <li>
+                <span>3</span>
+                <p>In BAELIX Free settings, open “Free image generation.”</p>
+              </li>
+              <li>
+                <span>4</span>
+                <p>
+                  Paste both values and select{' '}
+                  <strong>Connect free image intelligence</strong>.
+                </p>
+              </li>
             </ol>
-            <a href="https://dash.cloudflare.com/?to=/:account/ai/workers-ai" target="_blank" rel="noreferrer">Open Workers AI <ExternalLink size={14} /></a>
+            <a
+              href="https://dash.cloudflare.com/?to=/:account/ai/workers-ai"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open Workers AI <ExternalLink size={14} />
+            </a>
           </article>
         </div>
 
         <div className="privacy-note">
           <ShieldCheck size={22} />
-          <div><strong>Built for a personal computer.</strong><p>Your provider credentials stay in Windows Credential Manager, and BAELIX keeps its local memory on your device.</p></div>
+          <div>
+            <strong>Built for a personal computer.</strong>
+            <p>
+              Your provider credentials stay in Windows Credential Manager, and
+              BAELIX keeps its local memory on your device.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -249,10 +379,50 @@ export default function Home() {
             <small>Latest release · Windows x64</small>
           </div>
           <div className="install-steps">
-            <article><div><Download size={20} /></div><span>01</span><h3>Download</h3><p>Get the latest BAELIX Windows installer from the official release page.</p></article>
-            <article><div><Play size={20} /></div><span>02</span><h3>Install</h3><p>Open the installer. If Windows shows a protection notice, review the publisher and choose to continue.</p></article>
-            <article><div><Settings2 size={20} /></div><span>03</span><h3>Connect</h3><p>Open Settings and connect OpenRouter. Cloudflare image intelligence is optional.</p></article>
-            <article><div><FolderOpen size={20} /></div><span>04</span><h3>Create</h3><p>Choose a project location, turn on Automation when needed, and tell BAELIX what to make.</p></article>
+            <article>
+              <div>
+                <Download size={20} />
+              </div>
+              <span>01</span>
+              <h3>Download</h3>
+              <p>
+                Get the latest BAELIX Windows installer from the official
+                release page.
+              </p>
+            </article>
+            <article>
+              <div>
+                <Play size={20} />
+              </div>
+              <span>02</span>
+              <h3>Install</h3>
+              <p>
+                Open the installer. If Windows shows a protection notice, review
+                the publisher and choose to continue.
+              </p>
+            </article>
+            <article>
+              <div>
+                <Settings2 size={20} />
+              </div>
+              <span>03</span>
+              <h3>Connect</h3>
+              <p>
+                Open Settings and connect OpenRouter. Cloudflare image
+                intelligence is optional.
+              </p>
+            </article>
+            <article>
+              <div>
+                <FolderOpen size={20} />
+              </div>
+              <span>04</span>
+              <h3>Create</h3>
+              <p>
+                Choose a project location, turn on Automation when needed, and
+                tell BAELIX what to make.
+              </p>
+            </article>
           </div>
         </div>
       </section>
@@ -262,20 +432,50 @@ export default function Home() {
         <div className="creators-grid">
           <div>
             <h2>Built with a belief in accessible intelligence.</h2>
-            <p>BAELIX was created by two builders working toward AI that is useful, visible, and available to everyone.</p>
+            <p>
+              BAELIX was created by two builders working toward AI that is
+              useful, visible, and available to everyone.
+            </p>
           </div>
           <div className="founder-list">
-            <article><span>ND</span><div><h3>Nikhil Dhandhi</h3><p>Co-creator of BAELIX</p></div><Check size={18} /></article>
-            <article><span>RC</span><div><h3>Rupesh Chauhan</h3><p>Co-creator of BAELIX</p></div><Check size={18} /></article>
+            <article>
+              <span>ND</span>
+              <div>
+                <h3>Nikhil Dhandhi</h3>
+                <p>Co-creator of BAELIX</p>
+              </div>
+              <Check size={18} />
+            </article>
+            <article>
+              <span>RC</span>
+              <div>
+                <h3>Rupesh Chauhan</h3>
+                <p>Co-creator of BAELIX</p>
+              </div>
+              <Check size={18} />
+            </article>
           </div>
         </div>
       </section>
 
       <footer>
-        <div className="footer-field" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
-        <a className="brand" href="#top"><Image src="/baelix-signature.svg" alt="" width={38} height={38} /><span>BAELIX</span></a>
+        <div className="footer-field" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+          <i />
+          <i />
+          <i />
+        </div>
+        <a className="brand" href="#top">
+          <Image src="/baelix-signature.svg" alt="" width={38} height={38} />
+          <span>BAELIX</span>
+        </a>
         <p>Automation is the future.</p>
-        <p>© {new Date().getFullYear()} BAELIX · <Link href="/privacy-policy">Privacy &amp; Data Policy</Link></p>
+        <p>
+          © {new Date().getFullYear()} BAELIX ·{' '}
+          <Link href="/privacy-policy">Privacy &amp; Data Policy</Link>
+        </p>
       </footer>
     </main>
   );
